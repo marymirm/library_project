@@ -53,22 +53,25 @@ function addBookToLibrary(title, author, pages) {
     displayBooksOnPage();
 }
 
-
 function displayBooksOnPage() {
     let books = document.querySelector(".books");
     let card = books.querySelectorAll(".card");
     card.forEach((card) => card.remove());
 
-
-    // const removeDivs = document.querySelectorAll(".card");
-    // for (let i = 0; i < removeDivs.lenght; i++) {
-    //     removeDivs[i].remove();
-    // }
-
     myLibrary.forEach(myLibrary => {
         const card = document.createElement("div");
         card.classList.add ("card");
         books.appendChild(card);
+
+        const delBtn = document.createElement("button")
+        delBtn.id = 'delBtn';
+        delBtn.innerHTML = 'X';
+        card.appendChild(delBtn);
+
+        delBtn.addEventListener('click', function handleClick(event) {
+            card.remove();
+        })
+
         for (let key in myLibrary) {
             console.log(`${key}: ${myLibrary[key]}`);
             const para = document.createElement("p");
@@ -78,6 +81,13 @@ function displayBooksOnPage() {
     })
 }
 
+
+addBookToLibrary ("Title1", "Author1", "Page1");
+addBookToLibrary ("Title2", "Author2", "Page2");
+addBookToLibrary ("Title3", "Author3", "Page3");
+addBookToLibrary ("Title4", "Author4", "Page4");
+addBookToLibrary ("Title5", "Author5", "Page5");
+addBookToLibrary ("Title6", "Author6", "Page6");
 
 
 
