@@ -62,7 +62,8 @@ function displayBooksOnPage() {
         const card = document.createElement("div");
         card.classList.add ("card");
         books.appendChild(card);
-
+        
+        // button to remove bookCard
         const delBtn = document.createElement("button")
         delBtn.id = 'delBtn';
         delBtn.innerHTML = 'X';
@@ -72,22 +73,39 @@ function displayBooksOnPage() {
             card.remove();
         })
 
+        // create Title, Author and Pages paragrafs
         for (let key in myLibrary) {
             console.log(`${key}: ${myLibrary[key]}`);
             const para = document.createElement("p");
             para.textContent = (`${key}: ${myLibrary[key]}`);
             card.appendChild(para);
         }
+
+        //button to change read status color
+        const readBtn = document.createElement("button");
+        readBtn.id = 'readBtn';
+        readBtn.innerHTML = 'Read'
+        card.appendChild(readBtn);
+
+        let index = 0;
+
+        const colors = ['#ff0000', 'green'];
+
+        readBtn.addEventListener('click', function onClick() {
+        readBtn.style.backgroundColor = colors[index];
+
+        index = index >= colors.length -1 ? 0 : index + 1;
+        })
     })
 }
 
 
-addBookToLibrary ("Title1", "Author1", "Page1");
-addBookToLibrary ("Title2", "Author2", "Page2");
-addBookToLibrary ("Title3", "Author3", "Page3");
-addBookToLibrary ("Title4", "Author4", "Page4");
-addBookToLibrary ("Title5", "Author5", "Page5");
-addBookToLibrary ("Title6", "Author6", "Page6");
+// addBookToLibrary ("Title1", "Author1", "Page1");
+// addBookToLibrary ("Title2", "Author2", "Page2");
+// addBookToLibrary ("Title3", "Author3", "Page3");
+// addBookToLibrary ("Title4", "Author4", "Page4");
+// addBookToLibrary ("Title5", "Author5", "Page5");
+// addBookToLibrary ("Title6", "Author6", "Page6");
 
 
 
