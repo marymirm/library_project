@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script src="script.js" defer></script>
+
+    <div class="container">
+        <div class="bar">
+            <div>library</div>
+            <button class="log_in">Log in</button>
+        </div>
+
+        <div class="booklist">
+            <button id="add_book">+ Add book</button>
+        </div>
+
+        <form id="form">
+            <title>Add a book</title>
+
+            <div class="Title">
+                <label for="title"></label>
+                <input type="text" id="title" name="title" placeholder="Title" required>
+            </div>
+            
+            <div class="Author">
+                <label for="author"></label>
+                <input type="text" id="author" name="author" placeholder="Author" required>
+            </div>
+
+            <div class="pages">
+                <label for="number_of_pages"></label>
+                <input type="number" id="pages" name="pages" placeholder="Pages" required>
+            </div>
+
+            <div class="read">Have you read it?
+                <input type="checkbox" id="checkbox" name="checkbox" value="read">
+            </div>
+
+            <div class="Enter">
+                <input type="button" id="enterButton" value="Enter">
+            </div>
+        </form>
+
+        <div class="books"></div>
+
+        <footer>
+            <h1>Copyright 2022 Ymir Meijles</h1>
+        </footer>
+
+    </div>
+</body>
+</html>
