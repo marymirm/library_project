@@ -58,26 +58,37 @@ function displayBooksOnPage() {
     let card = books.querySelectorAll(".card");
     card.forEach((card) => card.remove());
 
-    myLibrary.forEach(myLibrary => {
+    let index = 0;
+    myLibrary.forEach(myLibrarys => {
+
         const card = document.createElement("div");
         card.classList.add ("card");
         books.appendChild(card);
         
         // button to remove bookCard
-        const delBtn = document.createElement("button")
+        const delBtn = document.createElement("button");
+        delBtn.classList.add("remove-book-button");
         delBtn.id = 'delBtn';
         delBtn.innerHTML = 'X';
+        delBtn.dataset.linkedArray = index;
+        index++;
+
         card.appendChild(delBtn);
 
-        delBtn.addEventListener('click', function handleClick(event) {
+        delBtn.addEventListener('click', removeBookFromLibrary);
+
+        function removeBookFromLibrary() {
+            let retrieveBookToRemove = delBtn.dataset.linkedArray;
+            myLibrary.splice(parseInt(retrieveBookToRemove), 1);
             card.remove();
-        })
+            displayBooksOnPage();
+        }
 
         // create Title, Author and Pages paragrafs
-        for (let key in myLibrary) {
-            console.log(`${key}: ${myLibrary[key]}`);
+        for (let key in myLibrarys) {
+            console.log(`${key}: ${myLibrarys[key]}`);
             const para = document.createElement("p");
-            para.textContent = (`${key}: ${myLibrary[key]}`);
+            para.textContent = (`${key}: ${myLibrarys[key]}`);
             card.appendChild(para);
         }
 
@@ -87,14 +98,14 @@ function displayBooksOnPage() {
         readBtn.innerHTML = 'Read'
         card.appendChild(readBtn);
 
-        let index = 0;
+        let index2 = 0;
 
         const colors = ['#ff0000', 'green'];
 
         readBtn.addEventListener('click', function onClick() {
-        readBtn.style.backgroundColor = colors[index];
+        readBtn.style.backgroundColor = colors[index2];
 
-        index = index >= colors.length -1 ? 0 : index + 1;
+        index2 = index2 >= colors.length -1 ? 0 : index2 + 1;
         })
     })
 }
